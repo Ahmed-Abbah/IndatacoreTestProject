@@ -1,0 +1,79 @@
+.upload-container {
+  margin: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.file-drop {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.custom-file-drop-content {
+  padding: 20px;
+}
+
+.custom-file-drop-content p {
+  margin-bottom: 10px;
+}
+
+.browse-button {
+  padding: 10px 15px;
+  background-color: #00257c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-table {
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.upload-progress {
+  margin-top: 20px;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  height: 30px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #001f70;
+  animation: uploadAnimation 20s linear; /* Use a linear easing function */
+  border-radius: 4px;
+}
+
+
+
+
+.upload-button {
+  padding: 10px 15px;
+  background-color: #003a7c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}

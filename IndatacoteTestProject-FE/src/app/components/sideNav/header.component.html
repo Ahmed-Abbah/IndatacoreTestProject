@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light w-100 navigation">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold" routerLink="/">InDataCore</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
+            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <!-- Add your navigation links here if needed -->
+    </div>
+
+    <div class="navbar-buttons ml-auto">
+      <div class="d-flex">
+        <ng-container *ngIf="!authService.isAuthenticated; else loggedInButtons">
+          <a class="btn btn-dark mr-2" routerLink="/login" style="margin-right:5px;">Login</a>
+          <a class="btn btn-dark" routerLink="/register">Register</a>
+        </ng-container>
+        <ng-template #loggedInButtons>
+          <a class="btn btn-danger" (click)="handleLogout()" routerLink="/logout">Logout</a>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <!-- Left Sidebar -->
+  <div class="sidenav col-md-3" *ngIf="authService.isAuthenticated" id="leftNavbar">
+    <!-- Sidebar content goes here -->
+    <div class="top justify-content-center align-content-center mt-2">
+      <!-- Add your logo or content here -->
+    </div>
+    <hr />
+
+    <div class="center">
+      <ul class="list-unstyled">
+        <li>
+          <a class="text-decoration-none" routerLink="/dashboard">
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <br />
+        <li>
+          <a class="text-decoration-none" routerLink="/gestion-departement">
+            <span>Departements</span>
+          </a>
+        </li>
+        <br />
+        <li>
+          <a class="text-decoration-none" routerLink="/gestion-employee">
+            <span>Employees</span>
+          </a>
+        </li>
+        <br />
+        <li>
+          <a class="text-decoration-none" routerLink="/upload-file">
+            <span>Upload Data</span>
+          </a>
+        </li>
+        <br />
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

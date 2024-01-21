@@ -1,0 +1,229 @@
+<section class="section products-main">
+    <div class="container" *ngIf="!showEditForm">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="title text-center">
+            <h2>All Employees</h2>
+          </div>
+        </div>
+      </div>
+
+
+        <button type="button" class="btn btn-primary" (click)="toggleEditForm()">
+          Add new Employee
+        </button><br>
+        <br>
+        <table
+        class="table table-striped table-bordered table-sm row-border hover"
+        id="datatableexample"
+      >
+        <thead>
+          <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>email</th>
+            <th>departement</th>
+            <th>Salary</th>
+            <th>Gender</th>
+            <th>joined Year</th>
+
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of employees">
+            <td>{{ s.firstName }}</td>
+            <td>{{ s.lastName }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.departementName }}</td>
+            <td>{{ s.salary }}</td>
+            <td>{{ s.gender }}</td>
+            <td>{{ s.joinedYear }}</td>
+            <td>
+              <button
+              type="button" class="btn btn-primary"
+              routerLink="/form-edit-employee/{{s.id}}"
+              >
+                Update
+              </button>
+              &nbsp;
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDelete(s.id)">
+              Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container"*ngIf="showEditForm">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="login-form border p-5">
+              <h2 class="mb-2">Add New Employee </h2>
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4">
+            <label for="firstName">First name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter first name"
+              formControlName="firstName"
+            />
+            <div
+              *ngIf="
+                editForm.get('firstName')?.invalid &&
+                editForm.get('firstName')?.touched
+              "
+            >
+              <small class="form-text text-danger"
+                >Please enter a valid first name</small
+              >
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="lastName">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter last name"
+              formControlName="lastName"
+            />
+            <div
+              *ngIf="
+                editForm.get('lastName')?.invalid &&
+                editForm.get('lastName')?.touched
+              "
+            >
+              <small class="form-text text-danger"
+                >Please enter a valid last name</small
+              >
+            </div>
+          </div>
+            <!-- ... (other parts of your HTML) ... -->
+
+            <div class="form-group mb-4">
+              <label for="gender">Gender</label>
+              <select class="form-control" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div
+                *ngIf="
+      editForm.get('gender')?.invalid &&
+      editForm.get('gender')?.touched
+    "
+              >
+                <small class="form-text text-danger"
+                >Please select a valid gender</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="salary">Salary</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter salary"
+                formControlName="salary"
+              />
+              <div
+                *ngIf="
+            editForm.get('salary')?.invalid &&
+            editForm.get('salary')?.touched
+        "
+              >
+                <small class="form-text text-danger"
+                >Please enter a valid salary</small
+                >
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label for="joinedYear">Joined Year</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter joined year"
+                formControlName="joinedYear"
+              />
+              <div
+                *ngIf="
+            editForm.get('joinedYear')?.invalid &&
+            editForm.get('joinedYear')?.touched
+        "
+              >
+                <small class="form-text text-danger"
+                >Please enter a valid joined year</small
+                >
+              </div>
+            </div>
+
+            <!-- ... (rest of your HTML) ... -->
+
+            <div class="form-group mb-4">
+                <label for="email">Email</label>
+                <input
+                type="email"
+                class="form-control"
+                placeholder="Enter email"
+                formControlName="email"
+                />
+                <div
+                *ngIf="
+                    editForm.get('email')?.invalid &&
+                    editForm.get('email')?.touched
+                "
+                >
+                <small class="form-text text-danger"
+                    >Please enter a valid email</small
+                >
+                </div>
+
+            </div>
+
+
+
+
+            <div class="form-group mb-4">
+                <label for="departement">Departement</label>
+                <select class="form-control" formControlName="departement">
+                <option *ngFor="let d of departements" [value]="d.id">
+                    {{ d.name }}
+                </option>
+                </select>
+                <div
+                *ngIf="
+                    editForm.get('departement')?.invalid &&
+                    editForm.get('departement')?.touched
+                "
+                >
+                <small class="form-text text-danger"
+                    >Please enter a valid departement</small
+                >
+                </div>
+            </div>
+
+          <button
+            type="submit"
+            class="btn btn-main mt-3 btn-dark"
+            [disabled]="!editForm.valid"
+          >
+            Add New Employee
+          </button>
+        </form>
+          </div>
+          </div>
+          </div>
+          </div>
+
+  </section>
+
+
+
+
+
+
